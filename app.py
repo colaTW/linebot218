@@ -45,5 +45,4 @@ def handle_member_joined(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
-            text='Got memberJoined event. event={}'.format(
-                event)))    
+            text='test'))    
