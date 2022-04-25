@@ -6,7 +6,8 @@ from flask import Flask, abort, request
 # https://github.com/line/line-bot-sdk-python
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage,MemberJoinedEvent
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
+
 
 app = Flask(__name__)
 
@@ -30,11 +31,7 @@ def callback():
 
         return "OK"
 
-@handler.add(MemberJoinedEvent)
-def handle_memberJoined(event):
-    # Send To Line
-    reply = TextSendMessage(text=f"welcome")
-    line_bot_api.reply_message(event.reply_token, reply)
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
