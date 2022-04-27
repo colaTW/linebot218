@@ -32,17 +32,11 @@ def callback():
         return "OK"
 
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    get_message = event.message.text
 
-    # Send To Line
-    reply = TextSendMessage(text=f"{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
     
 @handler.add(MemberJoinedEvent)
 def handle_member_joined(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
-            text='test'))    
+            text='歡迎加入成功218夾客群，若怕吵可以先關閉提醒😊\n有夾送或者中獎的夾客，麻煩幫我拍照直接上傳即可🥳\n若在場裡有遇到什麼問題，請拍照或說明狀況，場主或台主看到後會馬上與你聯繫！\n預祝大家都少少出，絕不吃保🥰'))    
